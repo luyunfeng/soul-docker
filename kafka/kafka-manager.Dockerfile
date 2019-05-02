@@ -1,6 +1,6 @@
 FROM centos
 
-RUN yum -y install nc vim lsof wget tar tree bzip2 unzip vim-enhanced passwd sudo yum-utils hostname net-tools rsync man git make automake cmake patch logrotate python-devel libpng-devel libjpeg-devel pwgen python-pip
+RUN yum -y install nc vim lsof wget tar tree bzip2 unzip vim-enhanced passwd sudo yum-utils hostname net-tools rsync man git make automake cmake patch logrotate python-devel libpng-devel libjpeg-devel pwgen python-pip openssl openssl-devel
 ENV KAFKA_MANAGER_VERSION "2.0.0.2"
 
 RUN mkdir /opt/java &&\
