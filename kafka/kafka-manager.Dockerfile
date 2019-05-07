@@ -1,5 +1,7 @@
 FROM centos
 
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+
 RUN yum -y install nc vim lsof wget tar tree bzip2 unzip vim-enhanced passwd sudo yum-utils hostname net-tools rsync man git make automake cmake patch logrotate python-devel libpng-devel libjpeg-devel pwgen python-pip openssl openssl-devel
 ENV KAFKA_MANAGER_VERSION "2.0.0.2"
 
@@ -16,6 +18,7 @@ RUN wget https://lucode-for-all-1251927515.cos.ap-chengdu.myqcloud.com/soft/kafk
 
 RUN unzip /opt/kafka-manager-${KAFKA_MANAGER_VERSION}.zip -d /opt &&\
     mv /opt/kafka-manager-${KAFKA_MANAGER_VERSION} /opt/kafka-manager
+
 
 WORKDIR /opt/kafka-manager
 

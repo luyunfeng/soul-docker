@@ -1,5 +1,7 @@
 FROM centos
 
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+
 ENV KAFKA_VERSION "2.1.1"
 
 RUN yum -y install vim lsof wget tar bzip2 unzip vim-enhanced passwd sudo yum-utils hostname net-tools rsync man git make automake cmake patch logrotate python-devel libpng-devel libjpeg-devel pwgen python-pip tree openssl openssl-devel
@@ -25,6 +27,8 @@ RUN sed -i '0,/^if/s%^if%export JAVA_HOME='$JAVA_HOME'\nexport PATH=$PATH:$JAVA_
 COPY kafka-start.sh /opt/kafka/start.sh 
 
 RUN  chmod a+x /opt/kafka/start.sh
+
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
 EXPOSE 9092
 
